@@ -64,7 +64,7 @@ const Form = (props) => {
       <ImageInput source="pair:depictedBy" accept="image/*">
         <ImageField source="src" />
       </ImageInput>
-      <ReferenceInput reference="Location" source="as:location" fullWidth>
+      <ReferenceInput reference="Location" source="location" fullWidth>
         <SelectInput optionText="vcard:given-name" />
       </ReferenceInput>
       {/* <TypeCondition type="mp:LoanRequest">
