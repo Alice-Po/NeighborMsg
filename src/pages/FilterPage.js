@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { List, FunctionField, ReferenceField } from 'react-admin';
+import { useSelector } from 'react-redux';
 import { Toolbar, Button, Box, Typography, Container, Card } from '@material-ui/core';
 import { Form, Field, FormSpy } from 'react-final-form';
 import { useHistory } from 'react-router-dom';
@@ -79,18 +80,19 @@ const MapWithContact = ({id}) => {
             basePath='/Note'>
             <SimpleShowLayout>
             <TextField source="pair:label" label="lal"/>
-           {/* <ReferenceField reference="Location" source="as:location"> */}
-              <FunctionField label="titre" render={record =>{
-                console.log(record)
-                return null
-              }
-                  
-                  }/> 
+            <ReferenceField reference="Location" source="location" link={false}>
+              <TextField source="vcard:given-name" label="adresse" />
+              {/*<FunctionField label="titre" render={record =>{*/}
+              {/*  console.log('location', record)*/}
+              {/*  return null*/}
+              {/*}*/}
+              {/*    */}
+              {/*    }/>*/}
                 {/* <MapField
                     latitude={record => record.latitude}
                     longitude={record => record.longitude}
                 /> */}
-            {/* </ReferenceField> */}
+             </ReferenceField>
             
             </SimpleShowLayout>
         </ShowBase>
@@ -159,6 +161,12 @@ const FilterPage = () => {
     let {id} = useParams();
     id = decodeURIComponent(id)
     console.log("param", id)
+
+  // Wait for all resources to be registered with Redux before continuing
+  // Copied from https://github.com/marmelab/react-admin/blob/3.x/packages/ra-core/src/core/Resource.tsx#L73-L76
+  const isRegistered = useSelector(state => !!state.admin.resources.Location);
+  if (!isRegistered) return null;
+
 //   const classes = useStyles();
 //   const history = useHistory();
 

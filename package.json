@@ -12,6 +12,7 @@
     "@semapps/list-components": "0.4.3",
     "@semapps/markdown-components": "0.4.3",
     "@semapps/semantic-data-provider": "0.4.3",
+    "@tiptap/pm": "^2.0.0-beta.95",
     "date-fns": "~2.8.1",
     "history": "4.10.1",
     "jwt-decode": "^3.1.2",
